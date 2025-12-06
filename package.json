@@ -1,0 +1,19 @@
+{
+  "name": "uts_iot",
+  "version": "1.0.0",
+  "description": "uts iot",
+  "main": "app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mongoose": "^9.0.0",
+    "mqtt": "^5.14.1"
+  }
+}
