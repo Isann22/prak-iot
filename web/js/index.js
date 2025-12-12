@@ -140,9 +140,8 @@ function renderSessions(sessions) {
 
   sessions.forEach((session) => {
     const row = sessionsDataBody.insertRow();
-    // Mengambil 6 digit terakhir dari _id agar tidak terlalu panjang
     row.innerHTML = `
-                    <td>**${session.user_name || "Anonim"}**</td>
+                    <td>${session.user_name || "Anonim"}</td>
                     <td>${session.mode || "--"}</td>
                     <td>${formatTime(session.start_time)}</td>
                     <td>${formatTime(session.end_time)}</td>

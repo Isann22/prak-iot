@@ -1,9 +1,36 @@
 import mqtt from "../config/mqtt.js";
 import mongoose from "mongoose";
+import Session from "../model/Session.js";
+
+const saveSession = async (req, res) => {
+  try {
+    const { user_name, mode, start_time, end_time, duration_ms, duration_str } =
+      req.body;
+
+    const newSession = new Session({
+      user_name,
+      mode,
+      start_time,
+      end_time,
+      duration_ms,
+      duration_str,
+    });
+
+    await newSession.save();
+    res
+      .status(201)
+      .json({ message: "Sesi berhasil disimpan", data: newSession });
+  } catch (error) {
+    console.error("Error saving session:", error);
+    res
+      .status(500)
+      .json({ message: "Gagal menyimpan sesi", error: error.message });
+  }
+};
 
 const getSessionsData = async (req, res) => {
   try {
-    const collection = mongoose.connection.db.collection("session");
+    const collection = mongoose.connection.db.collection("sessions");
 
     const query = {};
     if (req.query.mode) {
@@ -48,4 +75,4 @@ const streamData = (req, res) => {
   });
 };
 
-export default { getSessionsData, streamData };
+export default { getSessionsData, streamData, saveSession };
