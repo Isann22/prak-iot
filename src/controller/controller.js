@@ -4,8 +4,17 @@ import Session from "../model/Session.js";
 
 const saveSession = async (req, res) => {
   try {
-    const { user_name, mode, start_time, end_time, duration_ms, duration_str } =
-      req.body;
+    const {
+      user_name,
+      mode,
+      start_time,
+      end_time,
+      duration_ms,
+      duration_str,
+      avg_power,
+      max_power,
+      total_readings,
+    } = req.body;
 
     const newSession = new Session({
       user_name,
@@ -14,6 +23,9 @@ const saveSession = async (req, res) => {
       end_time,
       duration_ms,
       duration_str,
+      avg_power,
+      max_power,
+      total_readings,
     });
 
     await newSession.save();

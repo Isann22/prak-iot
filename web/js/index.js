@@ -153,6 +153,10 @@ function renderSessions(sessions) {
                     <td>${formatDuration(
                       session.duration_str || "0:00:00.000000"
                     )}</td>
+                     <td>${session.max_power}
+                    </td>
+                     <td>${session.avg_power}
+                    </td>
                 `;
   });
 }
